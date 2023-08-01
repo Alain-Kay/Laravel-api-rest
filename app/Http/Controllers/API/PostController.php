@@ -61,4 +61,21 @@ class PostController extends Controller
             return response()->json($e);
         }
     }
+
+    public function delete(Post $post)
+    {
+        try {
+
+           $post->delete();
+
+           return response()->json([
+            'message' => 'Post a éte effacé à jour avec succès',
+            'datas' => $post
+        ]);
+
+            
+        } catch (Exception $e) {
+            response()->json($e);
+        }
+    }
 }
