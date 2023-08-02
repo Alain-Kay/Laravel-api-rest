@@ -10,22 +10,37 @@ use App\Http\Requests\CreatePostRequest;
 use App\Http\Requests\EditPostRequest;
 use App\Http\Requests\UpdatePostRequest;
 
+
 class PostController extends Controller
 {
-    public function index(Post $post)
+    public function index(Request $request)
     {
+
+
         try {
 
-            $post = Post::all();
+            $query = Post::query();
+            $perPage = 2;
+            $page = $request->input('page', 2);
+            $search = $request->input('search');
+
+            if ($search) {
+                $query->whereRaw("title LIKE '%" . $search . "%'");
+            }
+
+            $total = $query->count();
+
+            $resultat = $query->offset(($page - 1) * $perPage)->limit($perPage)->get();
 
             return response()->json([
                 'message' => 'Liste des posts',
-                'datas' => $post
-            ]);
+                'current_page' => $page,
+                'last_page' => ceil($total / $perPage),
+                'datas' => $resultat
 
+            ]);
         } catch (Exception $e) {
             return response()->json($e);
-            
         }
     }
 
