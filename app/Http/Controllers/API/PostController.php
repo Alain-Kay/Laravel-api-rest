@@ -12,51 +12,58 @@ use App\Http\Requests\UpdatePostRequest;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Post $post)
     {
-        return response()->json([
-            'message' => 'Liste des articles'
-        ]);
+        try {
+
+            $post = Post::all();
+
+            return response()->json([
+                'message' => 'Liste des posts',
+                'datas' => $post
+            ]);
+
+        } catch (Exception $e) {
+            return response()->json($e);
+            
+        }
     }
 
     public function store(CreatePostRequest $request)
     {
-        
-       try {
 
-        $post = new Post();
-        
-        $post->title = $request->title;
-        $post->description = $request->description;
+        try {
 
-        $post->save();
-        
-        return response()->json([
-            'message' => 'Article créé avec succès',
-            'datas' => $post
-        ]);
-        
-       } catch (Exception $e) {
+            $post = new Post();
+
+            $post->title = $request->title;
+            $post->description = $request->description;
+
+            $post->save();
+
+            return response()->json([
+                'message' => 'Article créé avec succès',
+                'datas' => $post
+            ]);
+        } catch (Exception $e) {
             return response()->json($e);
-       }
+        }
     }
 
     public function update(EditPostRequest $request, Post $post)
     {
-        
-        try {
-        
-        $post->title = $request->title;
-        $post->description = $request->description;
 
-        $post->save();
-        
-        return response()->json([
-            'message' => 'Post a éte mise à jour avec succès',
-            'datas' => $post
-        ]);
-        
-            
+        try {
+
+            $post->title = $request->title;
+            $post->description = $request->description;
+
+            $post->save();
+
+            return response()->json([
+                'message' => 'Post a éte mise à jour avec succès',
+                'datas' => $post
+            ]);
         } catch (Exception $e) {
             return response()->json($e);
         }
@@ -66,14 +73,12 @@ class PostController extends Controller
     {
         try {
 
-           $post->delete();
+            $post->delete();
 
-           return response()->json([
-            'message' => 'Post a éte effacé à jour avec succès',
-            'datas' => $post
-        ]);
-
-            
+            return response()->json([
+                'message' => 'Post a éte effacé à jour avec succès',
+                'datas' => $post
+            ]);
         } catch (Exception $e) {
             response()->json($e);
         }
