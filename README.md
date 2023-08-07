@@ -18,23 +18,23 @@ Ce projet est une API REST développée avec le framework Laravel. Elle permet d
 
 Pour installer et exécuter l'API sur votre environnement local, suivez les étapes ci-dessous :
 
-1. Clonez le dépôt git sur votre machine locale
-# git clone https://github.com/Alain-kay/Laravel-api-rest.git
+# Clonez le dépôt git sur votre machine locale
+    git clone https://github.com/Alain-kay/Laravel-api-rest.git
 
 
-2. Installez les dépendances du projet
-#composer install
+# Installez les dépendances du projet
+    composer install
 
-3. Configurer la base de données en créant un fichier .env et en y spécifiant les informations d'accès à votre base de données.
+# Configurer la base de données en créant un fichier .env et en y spécifiant les informations d'accès à votre base de données.
 
-4. Générer la clé d'application Laravel :
-# php artisan key:generate
+# Générer la clé d'application Laravel :
+    php artisan key:generate
 
-4. Effectuer les migrations pour créer les tables de la base de données :
-# php artisan migrate
+# Effectuer les migrations pour créer les tables de la base de données :
+    php artisan migrate
 
-5. Démarrer le serveur de développement :
-# php artisan serve
+# Démarrer le serveur de développement :
+    php artisan serve
 
 L'API sera alors accessible à l'adresse http://localhost:8000.
 
