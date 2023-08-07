@@ -1,66 +1,81 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# API REST avec Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Description
 
-## About Laravel
+Ce projet est une API REST développée avec le framework Laravel. Elle permet de :
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. Création de posts: Les utilisateurs peuvent créer de nouveaux posts en fournissant un titre, un contenu et d'autres informations facultatives.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+2. Affichage de tous les posts: Les utilisateurs peuvent afficher tous les posts disponibles dans l'application.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+3. Recherche de posts par lettre: L'API propose une fonction de recherche qui permet aux utilisateurs de rechercher des posts en utilisant une lettre spécifique. Les résultats de recherche afficheront tous les posts contenant cette lettre dans leur titre ou leur contenu.
 
-## Learning Laravel
+4. Suppression de posts: Les utilisateurs peuvent supprimer des posts existants.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+5. Authentication des utilisateurs: Pour accéder aux fonctionnalités de création de nouveaux posts, les utilisateurs doivent s'authentifier en fournissant leurs identifiants (nom d'utilisateur et mot de passe).
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+# Installation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Pour installer et exécuter l'API sur votre environnement local, suivez les étapes ci-dessous :
 
-## Laravel Sponsors
+1. Clonez le dépôt git sur votre machine locale
+# git clone https://github.com/Alain-kay/Laravel-api-rest.git
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+2. Installez les dépendances du projet
+#composer install
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+3. Configurer la base de données en créant un fichier .env et en y spécifiant les informations d'accès à votre base de données.
 
-## Contributing
+4. Générer la clé d'application Laravel :
+# php artisan key:generate
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+4. Effectuer les migrations pour créer les tables de la base de données :
+# php artisan migrate
 
-## Code of Conduct
+5. Démarrer le serveur de développement :
+# php artisan serve
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+L'API sera alors accessible à l'adresse http://localhost:8000.
 
-## Security Vulnerabilities
+# Endpoints de l'API
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+L'API propose les endpoints suivants :
 
-## License
+. GET /api/posts: Récupère tous les posts disponibles.
+. GET /api/posts/{id}: Récupère un post spécifique en fonction de son id.
+. POST /api/posts: Crée un nouveau post.
+. GET /api/posts/search/{letter}: Recherche des posts en utilisant une lettre spécifique dans leur titre ou leur contenu.
+. DELETE /api/posts/{id}: Supprime un post spécifique en fonction de son id.
+. POST /api/register: Permet à un utilisateur de s'inscrire en fournissant un nom d'utilisateur, un email et un mot de passe.
+. POST /api/login: Permet à un utilisateur de s'authentifier en fournissant un nom d'utilisateur et un mot de passe.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Authentification
+
+L'API utilise une authentication basique à l'aide de tokens d'accès (API tokens). Pour accéder aux fonctionnalités de création de posts, les utilisateurs doivent s'authentifier en envoyant une requête POST à l'endpoint /api/login. Le serveur renverra alors un token d'accès qui devra être inclus dans les en-têtes de toutes les requêtes ultérieures pour les actions protégées.
+
+Exemple de requête d'authentication :
+
+POST /api/login
+Content-Type: application/json
+
+{
+  "name": "admin",
+  "password": "admin"
+}
+
+# Exemple de réponse avec le token :
+
+{
+  "access_token": "votre_token"
+}
+
+Pour les requêtes nécessitant une authentication, assurez-vous d'inclure l'en-tête Authorization avec la valeur Bearer votre_token pour chaque requête.
+
+# Auteur
+    ALAIN KAYUMBA
+
+
+
+
+
