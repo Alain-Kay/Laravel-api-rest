@@ -42,13 +42,13 @@ L'API sera alors accessible à l'adresse http://localhost:8000.
 
 L'API propose les endpoints suivants :
 
-. GET /api/posts: Récupère tous les posts disponibles.
-. GET /api/posts/{id}: Récupère un post spécifique en fonction de son id.
-. POST /api/posts: Crée un nouveau post.
-. GET /api/posts/search/{letter}: Recherche des posts en utilisant une lettre spécifique dans leur titre ou leur contenu.
-. DELETE /api/posts/{id}: Supprime un post spécifique en fonction de son id.
-. POST /api/register: Permet à un utilisateur de s'inscrire en fournissant un nom d'utilisateur, un email et un mot de passe.
-. POST /api/login: Permet à un utilisateur de s'authentifier en fournissant un nom d'utilisateur et un mot de passe.
+1. GET /api/posts: Récupère tous les posts disponibles.
+2. GET /api/posts/{id}: Récupère un post spécifique en fonction de son id.
+3. POST /api/posts: Crée un nouveau post.
+4. GET /api/posts/search/{letter}: Recherche des posts en utilisant une lettre spécifique dans leur titre ou leur contenu.
+5. DELETE /api/posts/{id}: Supprime un post spécifique en fonction de son id.
+6. POST /api/register: Permet à un utilisateur de s'inscrire en fournissant un nom d'utilisateur, un email et un mot de passe.
+7. POST /api/login: Permet à un utilisateur de s'authentifier en fournissant un nom d'utilisateur et un mot de passe.
 
 # Authentification
 
